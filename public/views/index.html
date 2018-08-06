@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WeMo Project - Config Generator</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/public/css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs center-tabs">
+                    <li class="tab col s3">
+                        <a href="#listTab" class="active">List</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="#scheduleTab">Schedule</a>
+                    </li>
+                    <li class="tab col s3">
+                        <a href="#statusTab">Status</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="listTab" class="col s12">
+                <h1>WeMo List</h1>
+                <div class="tbl-header">
+                    <table class='tableTop' cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                            <tr style="background-color: transparent">
+                                <div class="col s12">
+                                    <div class="row wemo-list" style='margin-left: 0; margin-right: 0; margin-bottom: 0px'>
+                                        <div class="input-field col s8" style="margin-bottom: 0px;margin-top: 0px;color: white">
+                                            <i class="material-icons prefix" style="padding-top: 0.25em; color: white">cloud_queue</i>
+                                            <input autocomplete="off" id="icon_prefix" type="text" class="validate wemo-input" style="color: white">
+                                            <label for="icon_prefix">WeMo IP</label>
+                                        </div>
+                                        <div id="wemo-input-button" class="input-field col s4 " style="margin-bottom: 0px;margin-top: 0px;padding-top: 0.75em">
+                                            <a class="btn disabled styled-button wemo-button wemo-button-disabled" style='width: 100%'>Add</a>
+                                        </div>
+                                    </div>
+                                    <hr style="height:1px;border-width:0;color:gray;background-color:rgba(0,0,0,0.12)">
+                                </div>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>IP</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div class="tbl-content">
+                    <table class='tableContentWemo' cellpadding="0" cellspacing="0" border="0">
+                        <tbody id='wemoTable'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div id="scheduleTab" class="col s12">
+                <div class="container center" style="padding-top: 2em">
+                    <div class="row" style="width: 100% !important">
+                        <div class="col s12 offset-s0">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Upload</span>
+                                    <p>Please upload .CSV file for proccessing</p>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar"></div>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+                                    <input id="upload-input" type="file" name="uploads[]" multiple="multiple">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row wemoControl" style="width: 100% !important">
+                        <button class="btn btn-lg minus-btn wemoDecrease" id="wemoDecrease" type="button">-</button>
+                        <button class="btn btn-lg plus-btn wemoIncrease" id="wemoIncrease" type="button">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="statusTab" class="col s12">
+
+                <div class="container center" style="padding-top: 2em; border-left: 2em; border-right: 2em; width: 100% !important ">
+                    <div class="row" style="width: 100% !important;">
+                        <div class="col s12 offset-s0">
+
+                            <div class="input-field col s5">
+                                <select class="selector mainSelect">
+                                    <option value="wemo-all" selected>All</option>
+                                    <option value="wemo-phase">Phase</option>
+                                    <option value="wemo-room">Room</option>
+                                    <option value="wemo-location">Location</option>
+                                    <!-- <option value="wemo-level">Level</option> -->
+                                    <!-- <option value="wemo-position">Position</option> -->
+                                    <option value="wemo-item">Item</option>
+                                    <!-- <option value="wemo-type">Type</option> -->
+                                </select>
+                                <label>List Parameter</label>
+                            </div>
+                            <div class="input-field col s7 hidden minorSelectParent">
+                                <select class="selector minorSelect">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="width: 100% !important;">
+                        <div class="col s12 offset-s0">
+                            <div class="tbl-header">
+                                <table class='tableTopPower' cellpadding="0" cellspacing="0" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>IP</th>
+                                            <th>Power</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="tbl-content">
+                                <table class='tableContentWemoPower' cellpadding="0" cellspacing="0" border="0">
+                                    <tbody id='wemoTablePower'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="container center" style="padding-top: 2em !important; border-left: 2em; border-right: 2em; width: 100% !important ">
+                            <div class="row" style="width: 100% !important;">
+                                <div class="col s12 offset-s0">
+                                    <canvas id="powerChart" width="auto" height="auto" style="margin-top: 1em; margin-left: 0.8em;border-radius: 4px; background-color: rgba(255, 255, 255, 0.4)"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--MODAL CODE BELOW-->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <h4 style="text-align: center">Invalid IP Address</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat styled-button-modal" style="text-align: center; width: 100%">Okay</a>
+                    </div>
+                </div>
+                <!--MODAL CODE ABOVE-->
+            </div>
+</body>
+
+
+
+
+
+</html>
+
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="/public/js/materialize.min.js"></script>
+<script src="/public/js/main.js"> </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
